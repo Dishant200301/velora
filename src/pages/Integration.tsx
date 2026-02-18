@@ -50,32 +50,30 @@ const Integration = () => (
       </FadeIn>
     </section>
 
-    <FadeIn>
-      <section className="pb-20">
-        <div className="max-w-[1140px] mx-auto px-4 xl:px-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {integrations.map((item, i) => (
-              <div key={i} className="bg-transparent border border-[#1e1e1e] rounded-[20px] p-6 transition-all duration-300 group">
-                <div className="w-16 h-16 rounded-xl  flex items-center justify-center mb-6 transition-colors">
-                  <img
-                    src={item.icon}
-                    alt={item.name}
-                    className="w-16 h-16 object-contain"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      e.currentTarget.parentElement?.classList.add('text-white', 'font-bold', 'text-xl');
-                      if (e.currentTarget.parentElement) e.currentTarget.parentElement.innerText = item.name.slice(0, 1);
-                    }}
-                  />
-                </div>
-                <h3 className="text-[24px] leading-[32px] font-medium text-white mb-3 font-sans">{item.name}</h3>
-                <p className="text-[#b4b4b4] text-[16px] leading-[26px] font-normal font-sans">{item.desc}</p>
+    <section className="pt-10 pb-20">
+      <div className="max-w-[1140px] mx-auto px-4 xl:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {integrations.map((item, i) => (
+            <div key={i} className="bg-transparent border border-[#1e1e1e] rounded-[20px] p-6 transition-all duration-300 group">
+              <div className="w-16 h-16 rounded-xl  flex items-center justify-center mb-6 transition-colors">
+                <img
+                  src={item.icon}
+                  alt={item.name}
+                  className="w-16 h-16 object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.parentElement?.classList.add('text-white', 'font-bold', 'text-xl');
+                    if (e.currentTarget.parentElement) e.currentTarget.parentElement.innerText = item.name.slice(0, 1);
+                  }}
+                />
               </div>
-            ))}
-          </div>
+              <h3 className="text-[24px] leading-[32px] font-medium text-white mb-3 font-sans">{item.name}</h3>
+              <p className="text-[#b4b4b4] text-[16px] leading-[26px] font-normal font-sans">{item.desc}</p>
+            </div>
+          ))}
         </div>
-      </section>
-    </FadeIn>
+      </div>
+    </section>
 
     <FadeIn><CTASection transparent={true} /></FadeIn>
   </Layout>

@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 14 80% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 14 80% 53%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 14 80% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 14 80% 53%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@layer components {
+  .glass-nav {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .gradient-badge {
+    background: linear-gradient(135deg, hsl(14 80% 53%), hsl(217 91% 60%));
+    padding: 1px;
+    border-radius: 9999px;
+  }
+
+  .gradient-badge-inner {
+    background: hsl(0 0% 0%);
+    border-radius: 9999px;
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, hsl(217 91% 60%), hsl(190 90% 50%), hsl(30 90% 55%), hsl(14 80% 53%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-bg {
+    background:
+      radial-gradient(ellipse at 20% 50%, hsl(14 80% 30% / 0.4), transparent 50%),
+      radial-gradient(ellipse at 80% 50%, hsl(217 91% 30% / 0.4), transparent 50%);
+  }
+
+  .gradient-bg-subtle {
+    background:
+      radial-gradient(ellipse at 0% 50%, hsl(14 80% 20% / 0.3), transparent 40%),
+      radial-gradient(ellipse at 100% 50%, hsl(217 91% 20% / 0.3), transparent 40%);
+  }
+
+  .gradient-border-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+    padding: 1px;
+    border-radius: 1rem;
+  }
+
+  .gradient-border-card-inner {
+    background: hsl(0 0% 3%);
+    border-radius: calc(1rem - 1px);
+  }
+
+  .btn-primary-glow {
+    box-shadow: 0 0 20px hsl(14 80% 53% / 0.3), 0 0 60px hsl(14 80% 53% / 0.1);
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .hero-gradient {
+    background:
+      radial-gradient(ellipse at 30% 20%, hsl(14 80% 25% / 0.5), transparent 50%),
+      radial-gradient(ellipse at 70% 30%, hsl(217 91% 25% / 0.4), transparent 50%),
+      linear-gradient(to bottom, transparent, hsl(0 0% 0%) 100%);
+  }
+
+  .section-padding {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  .text-slide-up {
+    @apply relative overflow-hidden;
+  }
+
+  .text-slide-up .text-slide-inner {
+    @apply flex flex-col transition-transform duration-300 ease-out;
+  }
+
+  .group:hover .text-slide-up .text-slide-inner {
+    transform: translateY(-50%);
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .shadow-neon-glow {
+    box-shadow:
+      0 0 20px rgba(255, 137, 24, 0.6),
+      0 0 40px rgba(255, 137, 24, 0.4),
+      0 0 60px rgba(0, 152, 243, 0.3),
+      0 0 80px rgba(0, 152, 243, 0.2),
+      inset 0 0 20px rgba(255, 137, 24, 0.1);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeInUp 0.4s ease-out forwards;
+  }
+}
